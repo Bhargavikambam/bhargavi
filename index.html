@@ -1,408 +1,385 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bhargavi Portfolio — Two Column Scroll</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #ffffff;
-      --muted: #64748b;
-      --accent: #0ea5a4;
-      --max-width: 1200px;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bhargavi Kambam | Portfolio</title>
 
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
-      background-image: url("https://img.freepik.com/premium-photo/abstract-background-metallic-with-luxury-concepts-3d-rendering_118019-1103.jpg?semt=ais_hybrid&w=740&q=80");
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #0f172a;
-    }
+<style>
+:root {
+  --bg:#0f172a;
+  --card:#ffffff;
+  --muted:#64748b;
+  --accent:#0ea5a4;
+}
 
+/* BODY */
+body{
+  margin:0;
+  font-family:Inter,system-ui,Arial;
+  background:linear-gradient(135deg,#0f172a,#1e293b);
+  color:#0f172a;
+}
 
-    .container {
-      max-width: var(--max-width);
-      margin: 24px auto;
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 24px;
-      padding: 0 16px;
-      align-items: start;
-      min-height: calc(100vh - 48px);
-    }
+/* CONTAINER */
+.container{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:24px;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
+}
 
-    /* LEFT COLUMN (fixed/sticky) */
-    .left {
-      position: sticky;
-      top: 24px;
-      align-self: start;
-      background: var(--card);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
-      background-color: lightcyan;
-      
-    }
+/* LEFT PANEL */
+.left{
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  position:sticky;
+  top:20px;
+}
 
-    .profile-img {
-      margin-left: 30px;
-      width: 150px;
-      height: 180px;
-      padding-top: -20px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin-bottom: 12px;
-      object-position: top;
-      padding: 15px 30px;
-      background-color: #0ea5a4;
-    }
+/* PROFILE IMAGE */
 
-    .name {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0 0 4px;
-    }
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  margin: 0 auto 15px;
 
-    .title {
-      color: var(--muted);
-      margin: 0 0 14px;
-      font-size: 0.95rem;
-    }
+  /* Clean border */
+  border: 3px solid #0ea5a4;
 
-    .left p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+  /* Soft shadow for depth */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 8px 0 0;
-    }
+  /* Smooth animation */
+  transition: all 0.3s ease;
+}
 
-    nav a {
-      display: block;
-      padding: 8px 10px;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #0f172a;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    nav a.active {
-      background: #ecfeff;
-      border: 1px solid rgba(14, 165, 164, 0.12);
-      color: var(--accent);
-    }
-
-    nav a:hover {
-      background: #f1f5f9;
-    }
-
-    .contact {
-      margin-top: 12px;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .download-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #0ea5a4;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .download-btn:hover {
-      background-color: #1e5fd1;
-    }
+/* Hover effect (very attractive) */
+.profile-img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
 
 
-    /* RIGHT COLUMN — scrollable full-page sections with snap */
-    .right {
-      height: calc(100vh - 48px);
-      overflow-y: auto;
-      scroll-behavior: smooth;
-      scroll-snap-type: y mandatory;
-      -webkit-overflow-scrolling: touch;
-      padding-right: 6px;
-      padding-bottom: 20px;
+/* NAME */
+.name{
+  text-align:center;
+  font-size:1.3rem;
+  font-weight:700;
+}
 
-    }
+/* TITLE */
+.title {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #0ea5a4;
+  margin-bottom: -10px;
+}
 
-    section.page {
-      min-height: calc(100vh - 48px);
-      padding: 48px 36px;
-      box-sizing: border-box;
-      scroll-snap-align: start;
-      background-color: white;
-      border-radius: 12px;
-      margin-bottom: 18px;
-      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.04);
-    }
+/* LEFT TEXT */
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    h2.section-title {
-      margin: 0 0 14px;
-      font-size: 1.4rem;
-    }
+/* NAV */
+nav a{
+  display:block;
+  padding:10px;
+  border-radius:8px;
+  text-decoration:none;
+  color:#0f172a;
+  margin-bottom:6px;
+  transition:0.3s;
+}
 
-    p.lead {
-      color: var(--muted);
-      margin: 0 0 18px;
-      line-height: 1.6;
-    }
+nav a:hover{
+  background:#e0f7f6;
+  transform:translateX(5px);
+}
 
-    /* simple responsive */
-    @media (max-width:880px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
+/* BUTTON */
+.download-btn{
+  display:block;
+  text-align:center;
+  padding:10px;
+  background:linear-gradient(45deg,#0ea5a4,#14b8a6);
+  color:white;
+  border-radius:8px;
+  margin-top:12px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
 
-      .left {
-        position: relative;
-        top: 0;
-        margin-bottom: 12px;
-      }
+.download-btn:hover{
+  transform:scale(1.05);
+  background:linear-gradient(45deg,#0f172a,#334155);
+}
 
-      .right {
-        height: auto;
-        overflow: visible;
-        scroll-snap-type: none;
-      }
+/* RIGHT PANEL */
+.right{
+  height:100vh;
+  overflow-y:auto;
+  padding-right:10px;
+}
 
-      section.page {
-        min-height: auto;
-        padding: 20px;
-        margin-bottom: 12px;
-      }
-    }
-  </style>
+/* SECTION */
+.page{
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(10px);
+  padding:35px;
+  border-radius:16px;
+  margin-bottom:20px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.page:hover{
+  transform:translateY(-5px);
+}
+
+/* TITLE */
+.section-title{
+  font-size:1.4rem;
+  margin-bottom:15px;
+  color:#0f172a;
+  border-left:4px solid var(--accent);
+  padding-left:10px;
+}
+
+/* TEXT */
+p{
+  color:#475569;
+  line-height:1.7;
+}
+
+/* LIST */
+ul{
+  padding-left:18px;
+}
+
+li{
+  margin-bottom:8px;
+  color:#334155;
+}
+
+/* PROJECT TITLE */
+h3{
+  margin-top:15px;
+  color:#0f172a;
+}
+
+/* LINKS */
+a{
+  color:#0ea5a4;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+/* SCROLLBAR */
+.right::-webkit-scrollbar{
+  width:6px;
+}
+
+.right::-webkit-scrollbar-thumb{
+  background:#0ea5a4;
+  border-radius:10px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .container{
+    grid-template-columns:1fr;
+  }
+  .right{
+    height:auto;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
-    <!-- LEFT (sticky) -->
-    <aside class="left" aria-label="profile and navigation">
-      <!-- replace src with your image link if needed -->
+<div class="container">
 
-      <img class="profile-img" src="images/dp-img.jpg" alt="Bhargavi Kambam" onerror="this.style.display='none'">
-      <h1 class="name">Bhargavi Kambam</h1>
-      <div class="title">Full Stack Developer | Python Developer</div>
-      <p>2025 ECE Graduate • Passionate about building clean, scalable web apps. Seeking entry-level roles (Full Stack /
-        Python / Software Engineer).</p>
+<!-- LEFT -->
+<aside class="left">
 
+<img src="images/dp-img.jpg" class="profile-img">
 
-      <nav aria-label="section navigation">
-        <ul>
-          <li><a href="#about" data-target="about" class="active">About</a></li>
-          <li><a href="#education" data-target="education">Education</a></li>
-          <li><a href="#skills" data-target="skills">Skills</a></li>
-          <li><a href="#projects" data-target="projects">Projects</a></li>
-          <li><a href="#internships" data-target="internships">Internships</a></li>
-          <li><a href="#contact" data-target="contact">Contact </a></li>
-        </ul>
-      </nav>
-      <a href="files/ResumeBhargavi.pdf" download class="download-btn">Download Resume</a>
-    </aside>
+<h2 class="name">Bhargavi Kambam
+<p class="title">Python Full Stack Developer</p>
+</h2>
+<p>
+Building scalable web applications using Python, Django, React, and SQL, with a focus on clean code and performance.
+</p>
 
+<nav>
+<a href="#about">About</a>
+<a href="#education">Education</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#internships">Internships</a>
+<a href="#certifications">Certifications</a>
+<a href="#contact">Contact</a>
+</nav>
 
-    <!-- RIGHT (scrollable pages) -->
-    <main class="right" id="rightCol" tabindex="0" aria-label="main content">
-      <section id="about" class="page" role="region" aria-labelledby="about-title">
-        <h2 id="about-title" class="section-title">About Me</h2>
-        <p>I am Bhargavi, a 2025 graduate with strong skills in Python, Django, SQL, HTML, CSS, and JavaScript.
-          I enjoy building web applications and learning new technologies. I have experience working on full-stack
-          projects, creating APIs, and developing responsive frontends.
-          I am looking for opportunities as a Full Stack Developer, Python Developer, Software Engineer, Junior
-          Developer,
-          or Associate Engineer where I can grow and contribute to real-world projects.</p>
-        <p>Quick highlights:</p>
-        <ul>
-          <li>Full-stack development with Django + React</li>
-          <li>Database optimization and REST API design</li>
-          <li>Version control (Git) & deployment basics</li>
-        </ul>
-      </section>
+<a href="https://drive.google.com/" class="download-btn">Download Resume</a>
 
+</aside>
 
-      <section id="education" class="page" role="region" aria-labelledby="education-title">
-        <h2 id="education-title" class="section-title">Education</h2>
+<!-- RIGHT -->
+<main class="right">
 
-        <article>
-          <h3>B.Tech in Electronics and Communication Engineering (ECE)</h3>
-          <p>Vaagdevi Institute of Technology and Science (JNTUA), Proddatur
-            <!-- Affiliated to JNTU Anantapur (JNTUA) -->
-          <p>2022 – 2025 | 76.85%</p>
-        </article>
+<!-- ABOUT -->
+<section id="about" class="page">
+<h2 class="section-title">About Me</h2>
 
-        <article>
-          <h3>Diploma in Electronics and Communication Engineering (ECE)</h3>
-          <p>Gouthami Institute of Technology for Women (SBTET), Proddatur</p>
-          <!-- State Board of Technical Education and Training (SBTET), Andhra Pradesh-->
-          <p>2019 – 2022 | 87.5%</p>
-        </article>
+<p>
+I am a passionate Python Full Stack Developer with a background in Electronics and Communication Engineering.
+I specialize in developing scalable web applications using Django, React, and SQL.
+</p>
 
-        <article>
-          <h3>SSC</h3>
-          <p>ZPHS Gangireddypalli</p>
-          <p>2018 – 2019 | 9.2 GPA</p>
-        </article>
+<p>
+I have hands-on experience in building RESTful APIs, designing efficient database systems,
+and creating responsive user interfaces. I enjoy solving real-world problems and writing clean,
+maintainable, and efficient code.
+</p>
 
-      </section>
+<p>
+I am actively seeking entry-level opportunities where I can contribute to impactful
+software development projects and continuously grow as a developer.
+</p>
 
+<ul>
+<li>Skilled in Django and React full-stack development</li>
+<li>Strong knowledge of REST APIs and database design</li>
+<li>Focused on clean, scalable, and maintainable code</li>
+</ul>
 
-      <section id="skills" class="page" role="region" aria-labelledby="skills-title">
-        <h2 id="skills-title" class="section-title">Skills</h2>
-        <ul>
-          <li><b>Programming Languages:</b> Python (OOPs, Pandas, NumPy)</li><br>
-          <li><b>Frontend:</b> HTML, CSS, JavaScript, Bootstrap, React</li><br>
-          <li><b>Backend:</b> Python, Django (views, models, ORM), REST APIs </li><br>
-          <li><b>Databases:</b> MySQL, SQL (Joins, Subqueries, Views, Normalization) </li><br>
-          <li><b>Tools:</b> Git, GitHub, Visual Studio Code</li>
-        </ul>
-      </section>
+</section>
 
+<!-- SKILLS -->
+<section id="skills" class="page">
+<h2 class="section-title">Skills</h2>
 
-      <section id="projects" class="page" role="region" aria-labelledby="projects-title">
-        <h2 id="projects-title" class="section-title">Projects</h2>
-        <h6 id="ofdm-project" style="margin:0 0 10px;font-size:1.25rem;color:#0f172a;">Optimized Data
-          Allocation and ICI
-          Self-Cancellation in OFDM <br><span style="font-weight:600;color:#475569;font-size:0.95rem;">(Jan 2025 - Apr
-            2025)</span></h6>
+<ul>
+<li><b>Programming Languages:</b> Python</li>
+<li><b>Frontend:</b> HTML5, CSS3, JavaScript, React</li>
+<li><b>Backend:</b> Django, REST APIs</li>
+<li><b>Databases:</b> SQL, MySQL</li>
+<li><b>Tools & Platforms:</b> Git, GitHub, VS Code</li>
+</ul>
 
-        <ul style="margin:0;padding-left:1.25rem;line-height:1.65;color:#334155;">
-          <li>Built a MATLAB-based OFDM system to improve wireless communication quality.</li>
-          <li>Applied ICI self-cancellation techniques to reduce interference between subcarriers.</li>
-          <li>Optimized data allocation to achieve better spectrum usage and higher transmission efficiency.</li>
-          <li>Analysed system performance using BER, SNR, and spectrum plots to validate improvements.</li>
-          <li>Resulted in clearer signals, reduced error rates, and more stable wireless communication.</li>
-        </ul><br>
-        <h6 id="auto-temp-project" style="margin:0 0 10px;font-size:1.25rem;color:#0f172a;"> Auto Temperature
-          Detector for COVID Safety <span style="font-weight:600;color:#475569;font-size:0.95rem;">(Oct 2021 - Jan
-            2022)</span>
-          </h3>
-          <ul style="margin:0;padding-left:1.25rem;line-height:1.65;color:#334155;">
-            <li>Designed and built an Arduino-based contactless temperature detection system with ~98% accuracy.</li>
-            <li>Integrated an IR temperature sensor and real-time LCD display for instant readings.</li>
-            <li>Implemented calibration and filtering to reduce noise and minimize false readings.</li>
-            <li>Added an alert mechanism (visual/buzzer) to flag high temperature readings for quick screening.</li>
-            <li>Delivered a reliable, low-cost prototype suitable for entrances, clinics, and public spaces.</li>
-          </ul>
+</section>
 
-      </section>
+<!-- EDUCATION -->
+<section id="education" class="page">
+<h2 class="section-title">Education</h2>
 
-      <section id="internships" class="page" role="region" aria-labelledby="internships-title">
-        <h2 id="internships-title" class="section-title">Internships</h2>
-        <h3 style="margin:0 0 10px;font-size:1.25rem;color:#0f172a;">Full-Stack Python Development
-          <span style="font-weight:600;color:#475569;font-size:0.95rem;">(2025)</span>
-        </h3>
-        <ul style="margin:0;padding-left:1.25rem;line-height:1.65;color:#334155;">
-          <li>Built and maintained Django-based web applications with clean frontend interfaces using HTML, CSS, and
-            React.</li>
-          <li>Implemented REST APIs, user authentication, form handling, and backend logic.</li>
-          <li>Optimized SQL queries to improve database performance and reduce load time.</li>
-          <li>Worked on frontend–backend integration, API responses, session management, and dynamic content
-            rendering.</li>
-          <li>Gained practical understanding of full-stack workflows, debugging, deployment, and version control.</li>
-        </ul> <br>
+<h3>B.Tech – Electronics and Communication Engineering</h3>
+<p>Vaagdevi Institute of Technology and Science (JNTUA)</p>
+<p>2022 – 2025 | CGPA: 7.95</p>
 
-        <h3 style="margin:0 0 10px;font-size:1.25rem;color:#0f172a;">VLSI Design <span
-            style="font-weight:600;color:#475569;font-size:0.95rem;">(2024)</span></h3>
+<h3>Diploma – Electronics and Communication Engineering</h3>
+<p>Gouthami Institute of Technology and Management for Women (SBTET)</p>
+<p>2019 – 2022 | 87.5%</p>
 
-        <ul style="margin:0;padding-left:1.25rem;line-height:1.65;color:#334155;">
-          <li>Worked on digital circuit design using Verilog HDL.</li>
-          <li>Designed and simulated combinational and sequential circuits.</li>
-          <li>Performed logic synthesis and functional verification.</li>
-          <li>Gained understanding of timing analysis, setup/hold time, and clocking.</li>
-          <li>Hands-on experience with EDA tools and VLSI design flow.</li>
-        </ul>
-      </section>
+<h3>SSC</h3>
+<p>ZPHS Gangireddypalli</p>
+<p>2018 – 2019 | GPA: 9.2</p>
 
-      <section id="skills" class="page" role="region" aria-labelledby="skills-title">
-        <h2 id="skills-title" class="section-title">Skills</h2>
-        <ul>
-          <li><b>Programming Languages:</b> Python (OOPs, Pandas, NumPy)</li><br>
-          <li><b>Web Technologies:</b> HTML, CSS, JavaScript, React, Django, REST APIs</li><br>
-          <li><b>Databases:</b> MySQL, SQL (Joins, Subqueries, Views, Normalization) </li><br>
-          <li><b>Tools:</b> Git, GitHub, Visual Studio Code, MS Office, Canva</li>
-        </ul>
-      </section>
+</section>
 
-      <section id="contact" class="page" role="region" aria-labelledby="contact-title">
-        <h2 id="contact-title" class="section-title">Contact Us</h2>
-        <p>Email: <a href="mailto:bhargavi@example.com">bhargavikambam32@gmail.com</a></p>
-        <p>Phone: <a href="tel:+916281743430">+91-6281743430</a></p>
-        <p>Location: <a href="https://www.google.com/maps/place/India/" target="_blank">India</a></p>
-        <p>LinkedIn: <a href="#" target="_blank" rel="noopener">linkedin.com/in/bhargavi-kambam</a></p>
-        <p>GitHub: <a href="#" target="_blank" rel="noopener">github.com/Bhargavikambam</a></p>
-      </section>
-    </main>
-  </div>
+<!-- PROJECTS -->
+<section id="projects" class="page">
+<h2 class="section-title">Projects</h2>
 
-  <script>
-    // Left nav click -> scroll right column to the correct section
-    document.querySelectorAll('.left nav a').forEach(a => {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        const id = this.getAttribute('href').slice(1);
-        const section = document.getElementById(id);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
+<h3>GreenBag – E-commerce Web Application</h3>
+<ul>
+<li>Developed a full-stack e-commerce application using Django, SQL, HTML, CSS, and JavaScript</li>
+<li>Implemented secure CRUD operations using Django ORM</li>
+<li>Optimized database queries for better performance</li>
+<li>Designed responsive user interfaces</li>
+<li>Deployed application using Render</li>
+</ul>
 
-    // Update active nav item on scroll
-    const right = document.getElementById('rightCol');
-    const navLinks = document.querySelectorAll('.left nav a');
-    const sections = [...document.querySelectorAll('.right section.page')];
+<h3>E-Mart – E-commerce Frontend Application</h3>
+<ul>
+<li>Built responsive frontend using React</li>
+<li>Developed reusable components like Navbar, Cart, Product Card</li>
+<li>Implemented search, filtering, and routing</li>
+<li>Used React Hooks for state management</li>
+</ul>
 
-    function setActiveByScroll() {
-      const top = right.scrollTop;
-      // find section whose top is nearest but <= top + 40
-      let activeId = sections[0].id;
-      for (const sec of sections) {
-        const rect = sec.getBoundingClientRect();
-        // relative to container viewport
-        const offset = rect.top - right.getBoundingClientRect().top;
-        if (offset <= 40) activeId = sec.id;
-      }
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + activeId);
-      });
-    }
+<h3>Job Portal Web Application</h3>
+<ul>
+<li>Developed full-stack recruitment platform with role-based login</li>
+<li>Implemented REST API communication</li>
+<li>Designed PostgreSQL database schema</li>
+<li>Built dynamic frontend using Django templates</li>
+</ul>
 
-    right.addEventListener('scroll', throttle(setActiveByScroll, 100));
+</section>
 
-    // helper throttle
-    function throttle(fn, wait) {
-      let last = 0;
-      return function (...args) {
-        const now = Date.now();
-        if (now - last >= wait) {
-          last = now;
-          fn.apply(this, args);
-        }
-      }
-    }
+<!-- INTERNSHIP -->
+<section id="internships" class="page">
+<h2 class="section-title">Internships</h2>
 
-    // ensure initial active
-    setActiveByScroll();
-  </script>
+<h3>Software Development Intern – VSOFT IT Solutions Pvt Ltd</h3>
+<p>June 2025 – Dec 2025</p>
+
+<ul>
+<li>Developed full-stack web applications using Python, Django, React, and SQL</li>
+<li>Designed databases and implemented CRUD operations</li>
+<li>Built REST APIs and integrated frontend-backend</li>
+<li>Improved performance through debugging and optimization</li>
+<li>Worked in Agile environment with modular coding practices</li>
+</ul>
+
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="page">
+<h2 class="section-title">Certifications</h2>
+
+<ul>
+<li>AWS Cloud Practitioner Essentials – AWS (2024)</li>
+<li>Introduction to IoT – NPTEL IIT Kharagpur (2024)</li>
+<li>Python Internship Certificate – SkillDzire (2025)</li>
+</ul>
+
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page">
+<h2 class="section-title">Contact</h2>
+
+<p>Email: bhargavikambam32@gmail.com</p>
+<p>Phone: +91-6281743430</p>
+<p>Location: India</p>
+
+<p>GitHub: https://github.com/Bhargavikambam</p>
+
+</section>
+
+</main>
+</div>
 
 </body>
-
 </html>
